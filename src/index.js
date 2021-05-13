@@ -23,10 +23,9 @@
 
     return new Promise(function (resolve, reject) {
       fetch(options.baseURL, { method: 'POST', headers, body })
-        .then((res) => res.text())
         .catch(reject)
+        .then((res) => res.text())
         .then((res) => {
-          console.log();
           resolve(nxWeiboToPics(res));
         });
     });
