@@ -1,6 +1,6 @@
 {
   "name": "@jswork/next-node-weibo-picupload",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Weibo picupload for node.",
   "homepage": "https://github.com/afeiship/next-node-weibo-picupload",
   "author": {
@@ -45,5 +45,15 @@
   },
   "dependencies": {
     "@jswork/next-weibo-to-pics": "^1.1.1"
-  }
+  },
+  "keywords": [
+    "next",
+    "node",
+    "weibo",
+    "picupload",
+    "upload",
+    "oss",
+    "token",
+    "cookie"
+  ]
 }
