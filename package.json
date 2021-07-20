@@ -21,7 +21,6 @@
     "@jswork/gulp-pkg-header": "^1.0.3",
     "@jswork/next": "^1.0.5",
     "del": "^6.0.0",
-    "dotenv": "^9.0.2",
     "glob": "^7.1.7",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",

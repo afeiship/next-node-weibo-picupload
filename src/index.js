@@ -5,7 +5,6 @@
   var fs = require('fs');
   var fetch = require('node-fetch');
   var FormData = require('form-data');
-  var _ = require('dotenv').config();
   var defaults = {
     baseURL: 'https://picupload.weibo.com/interface/pic_upload.php',
     cookie: process.env.WEIBO_COOKIE
