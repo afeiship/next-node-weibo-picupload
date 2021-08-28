@@ -17,7 +17,8 @@
 
     inItems.forEach((filename, index) => {
       var idx = 'pic' + (index + 1);
-      body.append(idx, fs.readFileSync(filename));
+      var buf = Buffer.isBuffer(filename) ? filename : fs.readFileSync(filename);
+      body.append(idx, buf);
     });
 
     return new Promise(function (resolve, reject) {
