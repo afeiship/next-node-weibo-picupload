@@ -44,7 +44,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
-    "@jswork/next-fs-open": "^1.0.2",
+    "@jswork/next-fs-open": "^1.0.3",
     "@jswork/next-weibo-to-pics": "^1.1.1",
     "form-data": "^4.0.0"
   },
