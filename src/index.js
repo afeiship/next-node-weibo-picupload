@@ -2,7 +2,7 @@
   var global = typeof window !== 'undefined' ? window : this || Function('return this')();
   var nx = global.nx || require('@jswork/next');
   var nxWeiboToPics = nx.weiboToPics || require('@jswork/next-weibo-to-pics');
-  var fs = require('fs');
+  var NxFsOopen = nx.FsOpen || require('@jswork/next-fs-open');
   var fetch = require('node-fetch');
   var FormData = require('form-data');
   var defaults = {
@@ -15,9 +15,9 @@
     var body = new FormData();
     var headers = nx.mix({ cookie: options.cookie }, body.getHeaders());
 
-    inItems.forEach((filename, index) => {
+    inItems.forEach((item, index) => {
       var idx = 'pic' + (index + 1);
-      var buf = Buffer.isBuffer(filename) ? filename : fs.readFileSync(filename);
+      var buf = NxFsOopen.from(item);
       body.append(idx, buf);
     });
 
