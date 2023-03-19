@@ -3,6 +3,7 @@ interface Options {
   uploadURL?: string;
   cookie?: string;
 }
-interface NxState {
-  nodeWeiboPicupload(items: any, opts?: Options);
+
+interface NxStatic {
+  nodeWeiboPicupload(items: any, options?: Options);
 }
