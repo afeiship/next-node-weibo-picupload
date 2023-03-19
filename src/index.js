@@ -11,11 +11,12 @@
   };
 
   nx.nodeWeiboPicupload = function (inItems, inOptions) {
+    var items = Array.isArray(inItems) ? inItems: [inItems];
     var options = nx.mix(null, defaults, inOptions);
     var body = new FormData();
     var headers = nx.mix({ cookie: options.cookie }, body.getHeaders());
 
-    var promises = inItems.map((item, index) => {
+    var promises = items.map((item, index) => {
       var idx = 'pic' + (index + 1);
       return new Promise((resolve, reject) => {
         NxFsOpen.from(item)
