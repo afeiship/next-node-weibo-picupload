@@ -6,12 +6,13 @@
   var fetch = require('node-fetch');
   var FormData = require('form-data');
   var defaults = {
-    baseURL: 'https://picupload.weibo.com/interface/pic_upload.php',
+    baseURL: 'https://tva1.sinaimg.cn',
+    uploadURL: 'https://picupload.weibo.com/interface/pic_upload.php',
     cookie: process.env.WEIBO_COOKIE
   };
 
   nx.nodeWeiboPicupload = function (inItems, inOptions) {
-    var items = Array.isArray(inItems) ? inItems: [inItems];
+    var items = Array.isArray(inItems) ? inItems : [inItems];
     var options = nx.mix(null, defaults, inOptions);
     var body = new FormData();
     var headers = nx.mix({ cookie: options.cookie }, body.getHeaders());
@@ -29,14 +30,18 @@
     });
 
     return new Promise(function (resolve, reject) {
-      Promise.all(promises).then(() => {
-        fetch(options.baseURL, { method: 'POST', headers, body })
-          .catch(reject)
-          .then((res) => res.text())
-          .then((res) => {
-            resolve(nxWeiboToPics(res));
-          });
-      }).catch(reject);
+      Promise.all(promises)
+        .then(() => {
+          fetch(options.uploadURL, { method: 'POST', headers, body })
+            .catch(reject)
+            .then((res) => res.text())
+            .then((res) => {
+              var items = nxWeiboToPics(res, { baseURL: options.baseURL });
+              var target = items.length === 1 ? items[0] : items;
+              resolve(target);
+            });
+        })
+        .catch(reject);
     });
   };
 
